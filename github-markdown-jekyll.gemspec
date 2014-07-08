@@ -1,13 +1,13 @@
 # encoding: utf-8
 Gem::Specification.new do |s|
   s.name = 'github-markdown-jekyll'
-  s.version = '0.6.5'
+  s.version = '0.7.0'
   s.summary = 'The Markdown parser with support for jekyll yaml frontmatter'
   s.description = 'Self-contained Markdown parser for GitHub, with all our custom extensions'
   s.date = '2013-10-01'
-  s.email = 'vicent@github.com'
-  s.homepage = 'http://github.github.com/github-flavored-markdown/'
-  s.authors = ['GitHub, Inc']
+  s.email = 'username@franzoni.eu'
+  s.homepage = 'https://github.com/alanfranz/github-markdown-jekyll'
+  s.authors = ['GitHub, Inc', 'Alan Franzoni']
   # = MANIFEST =
   s.files = %w[
     Rakefile
