@@ -19,7 +19,7 @@ end
 # ==========================================================
 
 def name
-  @name ||= "github-markdown"
+  @name ||= "github-markdown-jekyll"
 end
 
 def version
@@ -44,7 +44,7 @@ task 'test' => [:compile]
 # PACKAGING =================================================================
 
 require 'rubygems'
-$spec = eval(File.read('github-markdown.gemspec'))
+$spec = eval(File.read('github-markdown-jekyll.gemspec'))
 
 def package(ext='')
   "pkg/github-markdown-#{$spec.version}" + ext
@@ -55,8 +55,8 @@ task :package => package('.gem')
 
 directory 'pkg/'
 
-file package('.gem') => %w[pkg/ github-markdown.gemspec] + $spec.files do |f|
-  sh "gem build github-markdown.gemspec"
+file package('.gem') => %w[pkg/ github-markdown-jekyll.gemspec] + $spec.files do |f|
+  sh "gem build github-markdown-jekyll.gemspec"
   mv File.basename(f.name), f.name
 end
 
@@ -78,7 +78,7 @@ end
 
 task :update_gem do
   # read spec file and split out manifest section
-  GEMFILE = 'github-markdown.gemspec'
+  GEMFILE = 'github-markdown-jekyll.gemspec'
   spec = File.read(GEMFILE)
   head, manifest, tail = spec.split("  # = MANIFEST =\n")
   head.sub!(/\.date = '.*'/, ".date = '#{Date.today.to_s}'")

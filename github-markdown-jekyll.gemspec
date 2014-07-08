@@ -30,7 +30,7 @@ Gem::Specification.new do |s|
     ext/markdown/plaintext.h
     ext/markdown/stack.c
     ext/markdown/stack.h
-    github-markdown.gemspec
+    github-markdown-jekyll.gemspec
     lib/github/markdown.rb
     test/gfm_test.rb
   ]
