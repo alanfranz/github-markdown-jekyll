@@ -36,3 +36,27 @@ end
 
 # Load the actual C extension
 require 'github/markdown.so'
+
+module GitHub
+  Markdown.class_eval do
+    class << self
+      alias_method :original_to_html, :to_html
+
+      def to_html(content, mode)
+        pattern = /\A\s*---\s*?\n(?:(.*?)\n|)---\s*?(?:\n(.*))?\z/m
+        match = pattern.match(content)
+        if match.nil?
+          return original_to_html(content, mode)
+        end
+
+        yaml_frontmatter = match[1] || ''
+        md_content = match[2] || ''
+
+        return original_to_html("```yaml\n#{yaml_frontmatter}\n```\n#{md_content}", mode)
+
+
+      end
+    end
+
+  end
+end

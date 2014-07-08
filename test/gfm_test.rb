@@ -51,6 +51,20 @@ message
     GitHub::Markdown.to_html("~~~~~~~~~~\nhello world!\n~~~~~~~~~\n", :gfm)
   end
 
+  def test_yaml_is_rendered_in_frontmatter
+    html = GitHub::Markdown.render("---\npippo: 123\n---\n**Hello**")
+    parsed = Nokogiri::HTML::DocumentFragment.parse(html)
+    node = parsed.xpath('.//pre/code')
+    assert_equal "pippo: 123", node.text.strip
+  end
+
+  def test_if_no_frontmatter_normal_rendering_happens
+    html = GitHub::Markdown.render("**Hello**")
+    parsed = Nokogiri::HTML::DocumentFragment.parse(html)
+    node = parsed.xpath('.//p/strong')
+    assert_equal "Hello", node.text.strip
+  end
+
   # With GITHUB_MD_NESTING set to 32, we can handle up to 10 levels of list
   # nesting.  We do not go to 11.
   def test_nested_list
