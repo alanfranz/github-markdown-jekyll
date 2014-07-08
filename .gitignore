@@ -1,0 +1,4 @@
+.idea
+tmp
+Gemfile.lock
+lib/github/markdown.so
