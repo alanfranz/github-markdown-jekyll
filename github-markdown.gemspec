@@ -1,8 +1,8 @@
 # encoding: utf-8
 Gem::Specification.new do |s|
-  s.name = 'github-markdown'
+  s.name = 'github-markdown-jekyll'
   s.version = '0.6.5'
-  s.summary = 'The Markdown parser for GitHub.com'
+  s.summary = 'The Markdown parser with support for jekyll yaml frontmatter'
   s.description = 'Self-contained Markdown parser for GitHub, with all our custom extensions'
   s.date = '2013-10-01'
   s.email = 'vicent@github.com'
@@ -38,4 +38,6 @@ Gem::Specification.new do |s|
   s.test_files = ["test/gfm_test.rb"]
   s.extensions = ["ext/markdown/extconf.rb"]
   s.require_paths = ["lib"]
+  s.add_development_dependency 'rake-compiler', '~> 0.9.2'
+  s.add_development_dependency 'nokogiri', '~> 1.6.2.1'
 end
